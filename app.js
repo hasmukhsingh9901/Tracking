@@ -3,6 +3,7 @@ import http from "http";
 import { Server } from "socket.io";
 import { engine } from "express-handlebars";
 import dotenv from "dotenv"
+import { title } from "process";
 
 dotenv.config({ path: "./.env" })
 
@@ -16,11 +17,14 @@ app.set("views", "./views");
 
 app.use(express.static("public"));
 
-app.get("/map", (req, res) => {
-    res.render("home", {
+app.get("/", (req, res) => {
+    res.render("intro", {
         title: "Hello World!",
-        para: "This is from handlebars",
-    });
+    })
+})
+
+app.get("/map", (req, res) => {
+    res.render("home");
 });
 
 server.listen(process.env.PORT, () => {
