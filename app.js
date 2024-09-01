@@ -16,7 +16,7 @@ app.set("views", "./views");
 
 app.use(express.static("public"));
 
-app.get("/", (req, res) => {
+app.get("/map", (req, res) => {
     res.render("home", {
         title: "Hello World!",
         para: "This is from handlebars",
